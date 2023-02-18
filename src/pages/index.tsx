@@ -1,3 +1,6 @@
+import ReviewHistory from "@/components/ReviewHistory";
+import ReviewNew from "@/components/ReviewNew";
+import ReviewSearch from "@/components/ReviewSearch";
 import Head from "next/head";
 
 export default function Home() {
@@ -10,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        <ReviewNew />
       </main>
     </>
   );
