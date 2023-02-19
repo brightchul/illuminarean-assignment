@@ -1,13 +1,37 @@
 import { create } from "zustand";
 
-interface BearsState {
-  bears: number;
-  increase: () => void;
-  reset: () => void;
+import { initialData } from "@/test";
+
+export interface Movie {
+  id: number;
+  title: string;
+  comment: string;
+  score: number;
 }
 
-export const useBearStore = create<BearsState>((set) => ({
-  bears: 0,
-  increase: () => set((state) => ({ bears: state.bears + 1 })),
-  reset: () => set({ bears: 0 }),
+export type NewMovie = Omit<Movie, "id">;
+
+interface MoviesState {
+  movies: Movie[];
+  add: (movie: NewMovie) => void;
+}
+
+function nextMovieId(movies: Movie[]) {
+  const ids = movies.map(({ id }) => id);
+  return Math.max(...ids) + 1;
+}
+
+export const useMovieStore = create<MoviesState>((set) => ({
+  movies: [...initialData],
+  add: (movie: NewMovie) => {
+    set(({ movies }) => ({
+      movies: [
+        ...movies,
+        {
+          id: nextMovieId(movies),
+          ...movie,
+        },
+      ],
+    }));
+  },
 }));
