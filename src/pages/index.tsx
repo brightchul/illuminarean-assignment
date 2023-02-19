@@ -15,6 +15,7 @@ export default function Home() {
       <main>
         <ReviewNew />
         <ReviewSearch />
+        <ReviewHistory />
       </main>
     </>
   );
