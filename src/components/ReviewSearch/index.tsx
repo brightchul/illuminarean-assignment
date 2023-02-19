@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LeftOutlined from "@ant-design/icons/LeftOutlined";
 
 export default function ReviewSearch() {
   const [activeSearch, setActiveSearch] = useState(false);
@@ -9,16 +10,13 @@ export default function ReviewSearch() {
         activeSearch ? "fixed top-0 w-full h-full bg-white" : ""
       }`}
     >
-      <h2 className="text-lg font-bold text-[#194e84]">
+      <h2 className="flex items-center text-lg font-bold text-[#194e84]">
         {activeSearch && (
-          <button
-            className="hover:text-sky-400"
-            onClick={() => setActiveSearch(false)}
-          >
-            ◀
+          <button className="flex" onClick={() => setActiveSearch(false)}>
+            <LeftOutlined />
           </button>
         )}
-        리뷰 검색
+        <span>리뷰 검색</span>
       </h2>
       <div className="flex flex-col">
         <input
