@@ -1,9 +1,12 @@
 import ReviewHistory from "@/components/ReviewHistory";
 import ReviewNew from "@/components/ReviewNew";
 import ReviewSearch from "@/components/ReviewSearch";
+import { useSyncStore } from "@/hooks";
 import Head from "next/head";
 
 export default function Home() {
+  useSyncStore();
+
   return (
     <>
       <Head>
