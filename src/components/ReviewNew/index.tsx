@@ -9,11 +9,7 @@ export default function ReviewNew() {
     formState: { errors },
     reset,
   } = useForm<NewMovie>({
-    defaultValues: {
-      title: "",
-      comment: "",
-      score: 5,
-    },
+    defaultValues: { title: "", comment: "", score: 5 },
   });
 
   const addMovie = useMovieStore((state) => state.add);
