@@ -23,10 +23,10 @@ export default function ReviewSearch() {
   return (
     <section
       className={`flex flex-col gap-4 p-4 ${
-        activeSearch ? "fixed top-0 w-full h-full bg-white" : ""
+        activeSearch ? "fixed text-sm top-0 w-full h-full bg-white" : ""
       }`}
     >
-      <h2 className="flex items-center text-lg font-bold text-[#194e84]">
+      <h2 className="flex items-center text-lg font-bold text-dark-blue">
         {activeSearch && (
           <button className="flex" onClick={() => setActiveSearch(false)}>
             <LeftOutlined />
@@ -36,7 +36,7 @@ export default function ReviewSearch() {
       </h2>
       <div className="flex flex-col">
         <input
-          className="h-[40px] rounded-[5px] p-3 border border-solid border-[#ddd] bg-[#f5f5f5]"
+          className="h-40px rounded-md p-3 border border-solid border-lightgray bg-very-light-gray"
           type="text"
           onFocus={() => setActiveSearch(true)}
           onChange={handleSearchWordInput}

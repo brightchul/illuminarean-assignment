@@ -24,14 +24,14 @@ export default function ReviewNew() {
   };
 
   return (
-    <section className="flex flex-col gap-4 bg-[#f5f5f5] p-4">
-      <h2 className="text-lg font-bold text-[#194e84]">신규 리뷰 등록</h2>
+    <section className="flex flex-col gap-4 bg-very-light-gray p-4">
+      <h2 className="text-lg font-bold text-dark-blue">신규 리뷰 등록</h2>
       <div className="flex flex-col">
         <label className="font-semibold" htmlFor="title">
           영화 제목
         </label>
         <input
-          className="h-[40px] rounded-[5px] p-3 border border-solid border-[#ddd]"
+          className="h-40px rounded-md p-3 border border-solid border-lightgray"
           type="text"
           placeholder="제목을 입력해 주세요"
           {...register("title", {
@@ -46,7 +46,7 @@ export default function ReviewNew() {
           한줄평
         </label>
         <input
-          className="h-[40px] rounded-[5px] p-3 border border-solid border-[#ddd]"
+          className="h-40px rounded-md p-3 border border-solid border-lightgray"
           type="text"
           placeholder="내용을 입력해 주세요"
           {...register("comment", {
@@ -61,7 +61,7 @@ export default function ReviewNew() {
           별점
         </label>
         <select
-          className="h-[40px] rounded-[5px] p-2 border border-solid border-[#ddd]"
+          className="h-40px rounded-md p-2 border border-solid border-lightgray"
           {...register("score", {
             setValueAs: (value) => parseInt(value, 10),
           })}
@@ -75,7 +75,7 @@ export default function ReviewNew() {
       </div>
       <div>
         <button
-          className="w-full rounded-[10px] bg-[#194e84] text-[#ffffff] text-[15px] p-3"
+          className="w-full rounded-lg bg-dark-blue text-white text-sm p-3"
           type="button"
           onClick={handleSubmit(handleAddMovie)}
         >
