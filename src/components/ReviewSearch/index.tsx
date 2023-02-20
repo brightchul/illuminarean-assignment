@@ -1,5 +1,5 @@
 import debounce from "lodash/debounce";
-import { useCallback, useState } from "react";
+import { useMemo, useState } from "react";
 import LeftOutlined from "@ant-design/icons/LeftOutlined";
 
 import { useMovieStore } from "@/stores";
@@ -12,8 +12,11 @@ export default function ReviewSearch() {
   const movies = useMovieStore((state) => state.movies);
   const searchedMovies = movies.filter((o) => o.title.includes(searchWord));
 
-  const handleSearchWordInput = useCallback(
-    debounce((e) => setSearchWord(e.target.value), 100),
+  const handleSearchWordInput = useMemo(
+    () =>
+      debounce((e) => {
+        setSearchWord(e.target.value);
+      }, 100),
     []
   );
 
