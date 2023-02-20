@@ -1,4 +1,5 @@
 import StarFilled from "@ant-design/icons/StarFilled";
+import { memo } from "react";
 
 interface ReviewCardProps {
   title: string;
@@ -6,7 +7,7 @@ interface ReviewCardProps {
   score: number;
 }
 
-export default function ReviewCard({ title, comment, score }: ReviewCardProps) {
+function ReviewCard({ title, comment, score }: ReviewCardProps) {
   return (
     <div className="p-5 border border-solid border-lightgray rounded-lg bg-white">
       <div className="font-bold">{title}</div>
@@ -21,3 +22,5 @@ export default function ReviewCard({ title, comment, score }: ReviewCardProps) {
     </div>
   );
 }
+
+export default memo(ReviewCard);
