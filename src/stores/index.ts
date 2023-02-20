@@ -33,24 +33,16 @@ export const useMovieStore = create(
       movies: [...initialData],
       add: (movie: NewMovie) => {
         set(({ movies }: { movies: any }) => ({
-          movies: [
-            ...movies,
-            {
-              id: nextMovieId(movies),
-              ...movie,
-            },
-          ],
+          movies: [...movies, { id: nextMovieId(movies), ...movie }],
         }));
       },
       syncStore: () => {
         if (!myStorage.sync()) return;
+        if (!myStorage.hasItem(MOVIE_STORAGE)) return;
 
         const stringifyData = myStorage.getItem(MOVIE_STORAGE);
-
-        if (stringifyData) {
-          const { movies } = JSON.parse(stringifyData).state;
-          set(() => ({ movies: [...movies] }));
-        }
+        const { movies } = JSON.parse(stringifyData).state;
+        set(() => ({ movies: [...movies] }));
       },
     }),
     {

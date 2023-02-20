@@ -18,6 +18,10 @@ class MyLocalStorage implements StateStorage {
     else delete this.storage[name];
   }
 
+  hasItem(name: string) {
+    return this.getItem(name) !== null && this.getItem(name) !== undefined;
+  }
+
   isLocalStorage(): this is { storage: Storage } {
     return this.storage instanceof Storage;
   }
