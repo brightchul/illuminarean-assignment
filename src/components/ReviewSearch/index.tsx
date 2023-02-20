@@ -23,7 +23,9 @@ export default function ReviewSearch() {
   return (
     <section
       className={`flex flex-col gap-4 p-4 ${
-        activeSearch ? "fixed text-sm top-0 w-full h-full bg-white" : ""
+        activeSearch
+          ? "fixed text-sm top-0 bottom-0 overflow-y-scroll w-full min-h-full bg-white"
+          : ""
       }`}
     >
       <h2 className="flex items-center text-lg font-bold text-dark-blue">
