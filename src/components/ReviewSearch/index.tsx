@@ -1,8 +1,21 @@
-import { useState } from "react";
+import debounce from "lodash/debounce";
+import { useCallback, useState } from "react";
 import LeftOutlined from "@ant-design/icons/LeftOutlined";
+
+import { useMovieStore } from "@/stores";
+import ReviewCard from "../ReviewCard";
 
 export default function ReviewSearch() {
   const [activeSearch, setActiveSearch] = useState(false);
+  const [searchWord, setSearchWord] = useState("");
+
+  const movies = useMovieStore((state) => state.movies);
+  const searchedMovies = movies.filter((o) => o.title.includes(searchWord));
+
+  const handleSearchWordInput = useCallback(
+    debounce((e) => setSearchWord(e.target.value), 100),
+    []
+  );
 
   return (
     <section
@@ -23,9 +36,17 @@ export default function ReviewSearch() {
           className="h-[40px] rounded-[5px] p-3 border border-solid border-[#ddd] bg-[#f5f5f5]"
           type="text"
           onFocus={() => setActiveSearch(true)}
+          onChange={handleSearchWordInput}
           placeholder="영화 제목을 입력해 주세요."
         />
       </div>
+      {activeSearch && (
+        <div className="flex flex-col gap-4">
+          {searchedMovies.map((movie, idx) => (
+            <ReviewCard key={idx} {...movie} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
